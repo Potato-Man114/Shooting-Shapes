@@ -4,20 +4,25 @@ signal start_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	show_message($Message, "SHOOTING SHAPES!")
+	$SubMessage.hide()
+	$StartButton.text = "START GAME"
+	$ScoreLabel.hide()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func show_message(text):
-	$Message.text = text
-	$Message.show()
+func show_message(label, text):
+	label.text = text
+	label.show()
 
 func show_game_over():
-	show_message("GAME OVER -- PLAY AGAIN?")
-	$Message.show()
+	show_message($Message, "GAME OVER")
+	show_message($SubMessage, "SCORE: " + $ScoreLabel.text)
+	$StartButton.text = "PLAY AGAIN"
 	$StartButton.show()
+	$ScoreLabel.hide()
 
 func update_score(score):
 	$ScoreLabel.text = str(score)
@@ -26,6 +31,8 @@ func update_score(score):
 func _on_start_buton_pressed():
 	$StartButton.hide()
 	$Message.hide()
+	$SubMessage.hide()
+	$ScoreLabel.show()
 	start_game.emit()
 
 

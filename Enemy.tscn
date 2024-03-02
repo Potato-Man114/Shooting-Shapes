@@ -10,6 +10,8 @@ size = Vector2(32, 37)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_h7w7g")
+min_shoot_delay = 1.5
+max_shoot_delay = 4.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,13 +27,13 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_xrfat")
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="BetweenShotTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="BetweenShotTimer" to="." method="_on_between_shot_timer_timeout"]

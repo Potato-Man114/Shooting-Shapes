@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw4b6bi23xp2j"]
+[gd_scene load_steps=11 format=3 uid="uid://dw4b6bi23xp2j"]
 
 [ext_resource type="PackedScene" uid="uid://dp0mi4kif2o1c" path="res://player.tscn" id="1_fjmar"]
 [ext_resource type="Script" path="res://Main.gd" id="1_p16a4"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://74h1cvwcpenl" path="res://player_projectile.tscn" id="4_i483c"]
 [ext_resource type="PackedScene" uid="uid://7nf8fbsxbiyy" path="res://HUD.tscn" id="4_ofvdb"]
 [ext_resource type="Texture2D" uid="uid://c6oc3ygdl7vcr" path="res://art/background.png" id="5_keglc"]
+[ext_resource type="PackedScene" uid="uid://8t1li61altqh" path="res://Powerup.tscn" id="5_xy5l6"]
+[ext_resource type="Script" path="res://SpawnTimer.gd" id="6_8rbgp"]
 
 [sub_resource type="Curve2D" id="Curve2D_5w8pb"]
 _data = {
@@ -19,12 +21,18 @@ script = ExtResource("1_p16a4")
 enemy_scene = ExtResource("2_vp3hb")
 enemy_projectile_scene = ExtResource("3_5vpb4")
 player_projectile_scene = ExtResource("4_i483c")
+powerup_scene = ExtResource("5_xy5l6")
 
 [node name="Player" parent="." instance=ExtResource("1_fjmar")]
 
 [node name="EnemyTimer" type="Timer" parent="."]
+script = ExtResource("6_8rbgp")
+rate_increate_per_second = 0.03
 
 [node name="PowerupSpawnTimer" type="Timer" parent="."]
+script = ExtResource("6_8rbgp")
+rate_increate_per_second = 0.01
+initial_rate_per_second = 0.075
 
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
 position = Vector2(95, 325)
@@ -50,6 +58,7 @@ expand_mode = 1
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="EnemyTimer" to="EnemyTimer" method="_on_timeout"]
 [connection signal="timeout" from="PowerupSpawnTimer" to="." method="_on_powerup_spawn_timer_timeout"]
-[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

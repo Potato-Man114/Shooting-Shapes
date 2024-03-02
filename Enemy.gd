@@ -1,12 +1,14 @@
 extends Area2D
 
 signal shoot(x, y);
+signal defeat
+signal leave_screen
 
 var velocity
-@export var min_shoot_delay = 1
-@export var max_shoot_delay = 3
-@export var min_shoot_count = 1
-@export var max_shoot_count = 3
+@export var min_shoot_delay = 1.0
+@export var max_shoot_delay = 3.0
+@export var min_shoot_count = 1.0
+@export var max_shoot_count = 3.0
 
 var shots_remaining = 0
 
@@ -20,12 +22,8 @@ func _process(delta):
 	position += velocity * delta
 
 
-func _on_visible_on_screen_notifier_2d_screen_entered():
-	#TODO: this
-	pass # Replace with function body.
-
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	leave_screen.emit()
 	queue_free()
 
 
@@ -44,4 +42,5 @@ func _on_between_shot_timer_timeout():
 
 
 func _on_area_entered(area):
+	defeat.emit()
 	queue_free()

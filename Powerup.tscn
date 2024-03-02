@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://8t1li61altqh"]
+
+[ext_resource type="Script" path="res://Powerup.gd" id="1_5gsix"]
+[ext_resource type="Texture2D" uid="uid://b664x2tvkfdk1" path="res://art/powerup_sprite.png" id="2_gf5m1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostbr"]
+size = Vector2(36, 36)
+
+[node name="Powerup" type="Area2D" groups=["powerups"]]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_5gsix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ostbr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_gf5m1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-4.76837e-07, 3.33786e-06)
+scale = Vector2(1.8, 1.8)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

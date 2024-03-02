@@ -23,20 +23,42 @@ The project is for a 24-hour hackathon, so the scope is limited. The MVP for thi
 - [x] Player attack (projectile shooting)
 - [x] Enemy attack (projectile shooting)
 - [x] Enemy Spawning
-- [ ] Projectile Collision
+- [x] Projectile Collision
 	- [x] Projectile Enemy collision
 	- [x] Projectile Player collision
-	- [ ] Projectile Powerup collision
-- [ ] Score
+	- [x] Projectile Powerup collision
+- [x] Score
 - [x] Game Over
 - [x] Restart
 - [x] Main Menu
-- [ ] Powerups & Powerup spawning
+- [x] Powerups & Powerup spawning
 - [ ] Player collision
-	- [ ] Player and Enemy head-on (left-right) collision
+	- [x] Player and Enemy head-on (left-right) collision
 	- [ ] Player and Enemy side (up-down) collision
-	- [ ] Player and Powerup collision
+	- [x] Player and Powerup collision
 
+The above items were completed faster than I anticipated. Here is the next list of things to do:
+	
+- [ ] Particle Effects
+	- [ ] Player Defeat
+	- [ ] Enemy Defeat
+	- [ ] Powerup Collected
+	- [ ] Powerup applied to player
+	- [ ] Powerup lost
+	- [ ] Enemy leaves screen
+	- [ ] Player projectile leaves screen
+- [ ] Sound Effects
+	- [ ] Player Defeat
+	- [ ] Enemy Defeat
+	- [ ] Enemy Shoot
+	- [ ] Player Shoot
+	- [ ] Powerup collected
+	- [ ] Powerup applied to player
+	- [ ] Powerup lost
+	- [ ] Menu Button Selected
+- [ ] Background Audio
+	- [ ] Menu
+	- [ ] Gameplay
 
 # Gameplay
 
@@ -54,7 +76,7 @@ There are no waves or levels, a la Halo Reach's final level "Lone Wolf"
 ## User Interface
 
 The main menu simply presents the player with a "Play!" button to start the game.
-When the player is defeated, a game over screen appears above the running game. The player is presented with their score and prompted to restart with "R".
+When the player is defeated, a game over screen appears above the running game. The player is presented with their score and prompted to restart the game.
 
 # Mechanics
 
