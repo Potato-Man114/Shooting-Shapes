@@ -2,16 +2,19 @@ extends Node
 
 @export var enemy_scene: PackedScene
 @export var enemy_projectile_scene: PackedScene
+@export var player_projectile_scene: PackedScene
 @export var min_enemy_speed = 50.0
 @export var max_enemy_speed = 100.0
 @export var enemy_projectile_speed = 150.0
+@export var enemy_projectile_y_speed = 20
+@export var player_projectile_speed = Vector2(250, 0)
 
+var screen_size
 var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#new_game()
-	pass
+	screen_size = get_viewport().size
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -63,7 +66,18 @@ func enemy_shot(x, y):
 	
 func get_enemy_shot_velocity(x, y):
 	#TODO: y value
-	return Vector2(-enemy_projectile_speed, 0);
+	var y_velocity = 0
+	if (y < $Player.position.y - screen_size.y * 0.05):
+		y_velocity = enemy_projectile_y_speed
+	elif (y > $Player.position.y + screen_size.y * 0.05):
+		y_velocity = -enemy_projectile_y_speed
+	return Vector2(-enemy_projectile_speed, y_velocity);
+
+func _on_player_shoot(x, y):
+	var shot = player_projectile_scene.instantiate()
+	shot.position = Vector2(x, y)
+	shot.velocity = player_projectile_speed
+	add_child(shot)
 
 
 

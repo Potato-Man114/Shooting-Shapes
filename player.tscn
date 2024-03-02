@@ -8,6 +8,7 @@ size = Vector2(33, 32)
 
 [node name="Player" type="Area2D"]
 position = Vector2(97, 325)
+collision_mask = 10
 script = ExtResource("1_8ajgf")
 speed = 200
 start_position = Vector2(95, 325)
@@ -20,5 +21,9 @@ texture = ExtResource("1_mt26p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_1k0pf")
+
+[node name="ShotCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

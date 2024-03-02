@@ -18,24 +18,24 @@ HackUSU judges & my beautiful wife
 
 The project is for a 24-hour hackathon, so the scope is limited. The MVP for this project is to have the following prioritized list of items implemented:
 
-- [ ] Player movement
-- [ ] Enemy movement
-- [ ] Player attack (projectile shooting)
-- [ ] Enemy attack (projectile shooting)
-- [ ] Enemy Spawning
+- [x] Player movement
+- [x] Enemy movement
+- [x] Player attack (projectile shooting)
+- [x] Enemy attack (projectile shooting)
+- [x] Enemy Spawning
 - [ ] Projectile Collision
-    - [ ] Projectile Enemy collision
-    - [ ] Projectile Player collision
-    - [ ] Projectile Powerup collision
+	- [x] Projectile Enemy collision
+	- [x] Projectile Player collision
+	- [ ] Projectile Powerup collision
 - [ ] Score
-- [ ] Game Over
-- [ ] Restart
-- [ ] Main Menu
+- [x] Game Over
+- [x] Restart
+- [x] Main Menu
 - [ ] Powerups & Powerup spawning
 - [ ] Player collision
-    - [ ] Player and Enemy head-on (left-right) collision
-    - [ ] Player and Enemy side (up-down) collision
-    - [ ] Player and Powerup collision
+	- [ ] Player and Enemy head-on (left-right) collision
+	- [ ] Player and Enemy side (up-down) collision
+	- [ ] Player and Powerup collision
 
 
 # Gameplay
@@ -129,8 +129,8 @@ Whe the player is defeated, the game is over. Alongside events described in the 
 - Enemies and powerups stop spawning.
 - The score is locked in and cannot change.
 - A UI appears that:
-    - Shows the user their final score and congradulates them.
-    - Prompts the player to restart the game with the "R" key. See [User Interface](#user-interface)
+	- Shows the user their final score and congradulates them.
+	- Prompts the player to restart the game with the "R" key. See [User Interface](#user-interface)
 
 ## Score
 

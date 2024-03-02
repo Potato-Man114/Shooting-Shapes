@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://74h1cvwcpenl"]
+
+[ext_resource type="Script" path="res://projectile.gd" id="1_60vdd"]
+[ext_resource type="Texture2D" uid="uid://le5eccf4ws4u" path="res://art/player_projectile_sprite.png" id="1_s6a8w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ll8y1"]
+size = Vector2(10, 10)
+
+[node name="PlayerProjectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_60vdd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ll8y1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, -1.90735e-06)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_s6a8w")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
