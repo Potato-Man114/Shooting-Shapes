@@ -13,7 +13,7 @@ var shots_remaining = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ShootTimer.set_wait_time(randi_range(min_shoot_delay, max_shoot_delay))
+	$ShootTimer.set_wait_time(randf_range(min_shoot_delay, max_shoot_delay))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,6 +1,7 @@
 extends Node
 
 @export var enemy_scene: PackedScene
+@export var hard_enemy_scene: PackedScene
 @export var enemy_projectile_scene: PackedScene
 @export var player_projectile_scene: PackedScene
 @export var powerup_scene: PackedScene
@@ -63,13 +64,20 @@ func _on_enemy_timer_timeout():
 	# 50% chance of actually spawning an enemy
 	if (randi_range(0, 100) % 2 == 0):
 		return
-	var enemy = enemy_scene.instantiate()
+	var enemy = null
+	var y_velocity = null
+	if (randi_range(0, 100) <= 15):
+		enemy = hard_enemy_scene.instantiate()
+		y_velocity = -50 if randi_range(0, 100) % 2 == 0 else 50
+	else:
+		enemy = enemy_scene.instantiate()
+		y_velocity = 0
 	
 	var enemy_spawn_location = $EnemyPath/PathFollow2D
 	enemy_spawn_location.progress_ratio = randf()
 	
 	enemy.position = enemy_spawn_location.position
-	var velocity = Vector2(-randf_range(min_enemy_speed, max_enemy_speed), 0.0)
+	var velocity = Vector2(-randf_range(min_enemy_speed, max_enemy_speed), y_velocity)
 	enemy.velocity = velocity
 	
 	enemy.connect("shoot", enemy_shot)

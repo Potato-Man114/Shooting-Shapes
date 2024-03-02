@@ -37,7 +37,6 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	print("here")
 	if (powerup_active):
 		lose_powerup()
 		return
