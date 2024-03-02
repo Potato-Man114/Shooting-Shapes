@@ -1,8 +1,11 @@
 extends Node
 
 @export var enemy_scene: PackedScene
+@export var enemy_projectile_scene: PackedScene
 @export var min_enemy_speed = 50.0
-@export var max_enemy_speed = 200.0
+@export var max_enemy_speed = 100.0
+@export var enemy_projectile_speed = 150.0
+
 var score
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +24,7 @@ func game_over():
 
 func new_game():
 	get_tree().call_group("enemies", "queue_free")
+	get_tree().call_group("enemy_projectiles", "queue_free")
 	score = 0
 	$Player.start($PlayerStartPosition.position)
 	$EnemyTimer.start()
@@ -43,4 +47,26 @@ func _on_enemy_timer_timeout():
 	
 	enemy.velocity = velocity
 	
+	enemy.connect("shoot", enemy_shot)
+	
 	add_child(enemy)
+	
+func enemy_shot(x, y):
+	var velocity = get_enemy_shot_velocity(x, y)
+	var shot = enemy_projectile_scene.instantiate()
+	
+	shot.position = Vector2(x, y)
+	shot.velocity = velocity
+	
+	add_child(shot)
+	
+	
+func get_enemy_shot_velocity(x, y):
+	#TODO: y value
+	return Vector2(-enemy_projectile_speed, 0);
+
+
+
+
+
+

@@ -7,7 +7,6 @@
 size = Vector2(32, 37)
 
 [node name="Enemy" type="Area2D" groups=["enemies"]]
-position = Vector2(548, 270)
 script = ExtResource("1_h7w7g")
 metadata/_edit_group_ = true
 
@@ -23,5 +22,13 @@ scale = Vector2(1.9, 2.1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_xrfat")
 
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="BetweenShotTimer" type="Timer" parent="."]
+wait_time = 0.15
+
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="BetweenShotTimer" to="." method="_on_between_shot_timer_timeout"]
