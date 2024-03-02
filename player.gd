@@ -31,8 +31,7 @@ func _process(delta):
 		velocity.y += -speed if !powerup_active else -powerup_speed
 
 	if Input.is_action_pressed("shoot") and $ShotCooldown.is_stopped():
-		shoot.emit(position.x, position.y)
-		$ShotCooldown.start();
+		shoot_projectile()
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
@@ -43,6 +42,8 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 		lose_powerup()
 		return
 	$DefeatParticleEffect.emitting = true
+	$ExplosionEffect.playing = true
+	$DefeatSoundEffect.playing = true
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
 	process_input = false
@@ -73,3 +74,9 @@ func lose_powerup():
 		update_shot_cooldown(shot_cooldown)
 		$Sprite2D.texture = player_texture
 		$LosePowerupEffect.emitting = true
+		$LosePowerupSoundEffect.playing = true
+		
+func shoot_projectile():
+	shoot.emit(position.x, position.y)
+	$ShotCooldown.start();
+	$ShootSoundEffect.playing = true

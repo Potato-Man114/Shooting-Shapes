@@ -42,6 +42,7 @@ func _on_between_shot_timer_timeout():
 
 func _on_area_entered(area):
 	defeat.emit()
+	$AudioStreamPlayer2D.playing = true
 	$DefeatParticleEffect.emitting = true
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Sprite2D.hide()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://1hb8d2tvrhbs"]
+[gd_scene load_steps=6 format=3 uid="uid://1hb8d2tvrhbs"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_h7w7g"]
 [ext_resource type="Texture2D" uid="uid://crd8teugeuru5" path="res://art/enemy_sprite.png" id="1_xrfat"]
 [ext_resource type="Texture2D" uid="uid://dlmcg2mrjt5ux" path="res://art/red_particle.png" id="3_aqtrf"]
+[ext_resource type="AudioStream" uid="uid://qslptg2pr471" path="res://audio/enemy_defeat.mp3" id="4_n7e55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7sqa"]
 size = Vector2(32, 37)
@@ -49,6 +50,10 @@ initial_velocity_min = 33.33
 initial_velocity_max = 80.0
 scale_amount_min = 0.25
 scale_amount_max = 0.25
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n7e55")
+pitch_scale = 1.3
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -17,6 +17,7 @@ func _process(delta):
 
 func _on_area_entered(area):
 	collected.emit()
+	$CollectedSoundEffect.playing = true
 	$Sprite2D.hide() 
 	$CollisionShape2D.set_deferred("disabled", true)
 	$CollectedParticleEffect.emitting = true
