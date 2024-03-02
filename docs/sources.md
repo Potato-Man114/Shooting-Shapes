@@ -23,3 +23,7 @@ All audio is not my own. It came from the following websites:
 ### Sprites
 
 All sprites were created by myself during the hackathon event based on concept art I created before the event. 
+
+### Fonts
+
+The only font used is https://fonts.google.com/specimen/Micro+5
