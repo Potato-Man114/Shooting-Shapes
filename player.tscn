@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp0mi4kif2o1c"]
+[gd_scene load_steps=6 format=3 uid="uid://dp0mi4kif2o1c"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_8ajgf"]
 [ext_resource type="Texture2D" uid="uid://cms51rikgj2lh" path="res://art/player_sprite.png" id="1_mt26p"]
 [ext_resource type="Texture2D" uid="uid://4i0o54okc4aj" path="res://art/player_powerup_sprite.png" id="3_367o2"]
+[ext_resource type="Texture2D" uid="uid://dpyn4j48dvor1" path="res://art/green_particle.png" id="4_i7ptx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1k0pf"]
 size = Vector2(32, 28)
@@ -30,5 +31,20 @@ shape = SubResource("RectangleShape2D_1k0pf")
 [node name="ShotCooldown" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="DefeatParticleEffect" type="CPUParticles2D" parent="."]
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.3
+texture = ExtResource("4_i7ptx")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

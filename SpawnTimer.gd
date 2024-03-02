@@ -1,6 +1,6 @@
 extends Timer
 
-@export var rate_increate_per_second = 0.05
+@export var rate_increate_per_second = 0.03
 @export var initial_rate_per_second = 1.0
 
 # Called when the node enters the scene tree for the first time.

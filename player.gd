@@ -42,17 +42,18 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 	if (powerup_active):
 		loose_powerup()
 		return
-	hide()
+	$DefeatParticleEffect.emitting = true
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
 	process_input = false
+	$Sprite2D.hide()
 
 
 func start(pos):
 	position = pos
 	$CollisionShape2D.disabled = false
 	loose_powerup()
-	show()
+	$Sprite2D.show()
 	process_input = true
 
 func update_shot_cooldown(new_cooldown):

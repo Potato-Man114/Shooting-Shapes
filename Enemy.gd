@@ -9,7 +9,6 @@ var velocity
 @export var max_shoot_delay = 3.0
 @export var min_shoot_count = 1.0
 @export var max_shoot_count = 3.0
-
 var shots_remaining = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -43,4 +42,8 @@ func _on_between_shot_timer_timeout():
 
 func _on_area_entered(area):
 	defeat.emit()
+	$DefeatParticleEffect.emitting = true
+	$CollisionShape2D.set_deferred("disabled", true)
+	$Sprite2D.hide()
+	await $DefeatParticleEffect.finished
 	queue_free()
