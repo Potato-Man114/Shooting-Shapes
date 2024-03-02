@@ -10,7 +10,7 @@ The player defends against an endless stream of enemies, gradually increasing in
 
 ### Download Executable
 
-Go to the [project releases on GitHub](https://github.com/Potato-Man114/Shooting-Shapes/releases) and download the file associated with the latest release.
+Go to the [project releases on GitHub](https://github.com/Potato-Man114/Shooting-Shapes/releases) and download the .exe file associated with the latest release.
 
 ### Run w/ Godot Debug Engine
 

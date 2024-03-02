@@ -32,33 +32,24 @@ The project is for a 24-hour hackathon, so the scope is limited. The MVP for thi
 - [x] Restart
 - [x] Main Menu
 - [x] Powerups & Powerup spawning
-- [ ] Player collision
-	- [x] Player and Enemy head-on (left-right) collision
-	- [ ] Player and Enemy side (up-down) collision
+- [x] Player collision
+	- [x] Player and Enemy collision
 	- [x] Player and Powerup collision
 
 The above items were completed faster than I anticipated. Here is the next list of things to do:
 	
-- [ ] Particle Effects
+- [x] Particle Effects
 	- [x] Player Defeat
 	- [x] Enemy Defeat
 	- [x] Powerup Collected
-	- [ ] Powerup applied to player
 	- [x] Powerup lost
-	- [ ] Enemy leaves screen
-	- [ ] Player projectile leaves screen
-- [ ] Sound Effects
+- [x] Sound Effects
 	- [x] Player Defeat
 	- [x] Enemy Defeat
-	- [ ] Enemy Shoot
 	- [x] Player Shoot
 	- [x] Powerup collected
-	- [ ] Powerup applied to player
 	- [x] Powerup lost
-	- [ ] Menu Button Selected
-- [ ] Background Audio
-	- [ ] Menu
-	- [ ] Gameplay
+- [x] Background Audio
 
 # Gameplay
 
