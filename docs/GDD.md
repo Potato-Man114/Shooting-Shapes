@@ -48,13 +48,13 @@ The above items were completed faster than I anticipated. Here is the next list 
 	- [ ] Enemy leaves screen
 	- [ ] Player projectile leaves screen
 - [ ] Sound Effects
-	- [ ] Player Defeat
-	- [ ] Enemy Defeat
+	- [x] Player Defeat
+	- [x] Enemy Defeat
 	- [ ] Enemy Shoot
-	- [ ] Player Shoot
-	- [ ] Powerup collected
+	- [x] Player Shoot
+	- [x] Powerup collected
 	- [ ] Powerup applied to player
-	- [ ] Powerup lost
+	- [x] Powerup lost
 	- [ ] Menu Button Selected
 - [ ] Background Audio
 	- [ ] Menu
