@@ -45,4 +45,7 @@ func _on_shoot_timer_timeout():
 func _on_change_direction_timer_timeout():
 	velocity.y = -velocity.y
 	$ChangeDirectionTimer.set_wait_time(randf_range(min_change_direction_delay, max_change_direction_delay))
-	
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	leave_screen.emit()
+	queue_free()

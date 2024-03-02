@@ -19,6 +19,7 @@ extends Node
 var screen_size
 var score = 0
 var playing =  false
+var game_time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +34,8 @@ func game_over():
 	playing = false
 	$EnemyTimer.stop()
 	$PowerupSpawnTimer.stop()
-	$HUD.show_game_over()
+	$HUD.show_game_over(game_time)
+	$GameTimer.stop()
 
 func new_game():
 	playing = true
@@ -42,6 +44,8 @@ func new_game():
 	get_tree().call_group("player_projectiles", "queue_free")
 	get_tree().call_group("powerups", "queue_free")
 	score = 0
+	game_time = 0.0
+	$GameTimer.start()
 	$Player.start($PlayerStartPosition.position)
 	$EnemyTimer.set_spawn_rate($EnemyTimer.initial_rate_per_second)
 	$EnemyTimer.start()
@@ -66,7 +70,7 @@ func _on_enemy_timer_timeout():
 		return
 	var enemy = null
 	var y_velocity = null
-	if (randi_range(0, 100) <= 15):
+	if (randi_range(0, 100) <= 100):
 		enemy = hard_enemy_scene.instantiate()
 		y_velocity = -50 if randi_range(0, 100) % 2 == 0 else 50
 	else:
@@ -130,3 +134,7 @@ func update_score(score_change):
 func powerup_collected():
 	$Player.powerup()
 	update_score(powerup_collected_score)
+
+
+func _on_game_timer_timeout():
+	game_time += $GameTimer.wait_time
