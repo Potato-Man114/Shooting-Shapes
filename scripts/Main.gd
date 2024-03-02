@@ -30,7 +30,10 @@ func _process(delta):
 	if (playing):
 		if Input.is_action_just_pressed("pause"):
 			get_tree().paused = !get_tree().paused
-			
+			if get_tree().paused:
+				$HUD.show_pause_menu()
+			else:
+				$HUD.hide_pause_menu()
 
 func game_over():
 	playing = false

@@ -9,11 +9,12 @@ func _ready():
 	$SubMessage.text = "W AND S TO MOVE, SPACE TO SHOOT"
 	$ScoreLabel.hide()
 	$TimeMessage.hide()
+	hide_pause_menu()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+	
 func show_message(label, text):
 	label.text = text
 	label.show()
@@ -41,3 +42,14 @@ func _on_start_buton_pressed():
 
 func _on_message_timer_timeout():
 	$Message.hide()
+
+func show_pause_menu():
+	$ResetButton.show()
+
+func hide_pause_menu():
+	$ResetButton.hide()
+	
+func _on_reset_button_pressed():
+	hide_pause_menu()
+	get_tree().paused = false
+	start_game.emit()

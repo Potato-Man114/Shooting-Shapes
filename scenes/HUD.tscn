@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://b5ftjs8qctuy1" path="res://art/Micro5-Regular.ttf" id="2_xb2nt"]
 
 [node name="Hud" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_tfdh6")
 
 [node name="ScoreLabel" type="Label" parent="."]
@@ -87,4 +88,22 @@ theme_override_font_sizes/font_size = 36
 text = "time: "
 horizontal_alignment = 1
 
+[node name="ResetButton" type="Button" parent="."]
+process_mode = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -92.5
+offset_top = -170.0
+offset_right = 92.5
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_xb2nt")
+theme_override_font_sizes/font_size = 38
+text = "RESTART?"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_buton_pressed"]
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
