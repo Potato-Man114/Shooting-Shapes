@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfwro8ripytuo"]
 
-[ext_resource type="Script" path="res://EnemyHard.gd" id="1_50ya4"]
+[ext_resource type="Script" path="res://scripts/EnemyHard.gd" id="1_50ya4"]
 [ext_resource type="Texture2D" uid="uid://c8n1ptdnnucmf" path="res://art/enemy_sprite_2.png" id="1_wdp17"]
 [ext_resource type="AudioStream" uid="uid://qslptg2pr471" path="res://audio/enemy_defeat.mp3" id="2_cn7qb"]
 [ext_resource type="Texture2D" uid="uid://c4umcnfyciq4l" path="res://art/purple_particle.png" id="3_j53id"]
