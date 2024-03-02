@@ -40,7 +40,7 @@ func _process(delta):
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	print("here")
 	if (powerup_active):
-		loose_powerup()
+		lose_powerup()
 		return
 	$DefeatParticleEffect.emitting = true
 	hit.emit()
@@ -52,7 +52,7 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 func start(pos):
 	position = pos
 	$CollisionShape2D.disabled = false
-	loose_powerup()
+	lose_powerup()
 	$Sprite2D.show()
 	process_input = true
 
@@ -66,9 +66,10 @@ func powerup():
 		update_shot_cooldown(powerup_shot_cooldown)
 		$Sprite2D.texture = powerup_player_texture
 	
-func loose_powerup():
+func lose_powerup():
 	if (powerup_active):
 		powerup_active = false
 		powerup_lost.emit()
 		update_shot_cooldown(shot_cooldown)
 		$Sprite2D.texture = player_texture
+		$LosePowerupEffect.emitting = true

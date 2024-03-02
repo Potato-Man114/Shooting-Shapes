@@ -40,11 +40,11 @@ The project is for a 24-hour hackathon, so the scope is limited. The MVP for thi
 The above items were completed faster than I anticipated. Here is the next list of things to do:
 	
 - [ ] Particle Effects
-	- [ ] Player Defeat
-	- [ ] Enemy Defeat
-	- [ ] Powerup Collected
+	- [x] Player Defeat
+	- [x] Enemy Defeat
+	- [x] Powerup Collected
 	- [ ] Powerup applied to player
-	- [ ] Powerup lost
+	- [x] Powerup lost
 	- [ ] Enemy leaves screen
 	- [ ] Player projectile leaves screen
 - [ ] Sound Effects

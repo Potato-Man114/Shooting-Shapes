@@ -17,6 +17,10 @@ func _process(delta):
 
 func _on_area_entered(area):
 	collected.emit()
+	$Sprite2D.hide() 
+	$CollisionShape2D.set_deferred("disabled", true)
+	$CollectedParticleEffect.emitting = true
+	await $CollectedParticleEffect.finished
 	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
