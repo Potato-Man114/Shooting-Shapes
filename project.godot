@@ -13,6 +13,8 @@ config_version=5
 config/name="ShootingShapes"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0.0862745, 0.215686, 0.243137, 1)
+boot_splash/image="res://art/background.png"
 config/icon="res://icon.png"
 
 [display]
