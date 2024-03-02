@@ -19,6 +19,7 @@ _data = {
 point_count = 2
 
 [node name="Main" type="Node"]
+process_mode = 3
 script = ExtResource("1_p16a4")
 enemy_scene = ExtResource("2_vp3hb")
 hard_enemy_scene = ExtResource("3_fisb7")
@@ -27,19 +28,28 @@ player_projectile_scene = ExtResource("4_i483c")
 powerup_scene = ExtResource("5_xy5l6")
 
 [node name="Player" parent="." instance=ExtResource("1_fjmar")]
+process_mode = 1
+invincibility = false
 
 [node name="EnemyTimer" type="Timer" parent="."]
+process_mode = 1
 script = ExtResource("6_8rbgp")
+rate_increate_per_second = 0.09
+max_spawn_rate = 14
 
 [node name="PowerupSpawnTimer" type="Timer" parent="."]
+process_mode = 1
 script = ExtResource("6_8rbgp")
 rate_increate_per_second = 0.01
 initial_rate_per_second = 0.075
+max_spawn_rate = 2
 
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
+process_mode = 3
 position = Vector2(95, 325)
 
 [node name="EnemyPath" type="Path2D" parent="."]
+process_mode = 3
 curve = SubResource("Curve2D_5w8pb")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath"]
@@ -47,6 +57,7 @@ position = Vector2(1112, 25)
 rotation = 1.5691
 
 [node name="HUD" parent="." instance=ExtResource("4_ofvdb")]
+process_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -58,12 +69,18 @@ texture = ExtResource("5_keglc")
 expand_mode = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
 stream = ExtResource("10_fdxhk")
 volume_db = 6.575
 autoplay = true
 
 [node name="GameTimer" type="Timer" parent="."]
+process_mode = 1
 wait_time = 0.1
+
+[node name="OneSecondTimer" type="Timer" parent="."]
+process_mode = 1
+autostart = true
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
@@ -73,3 +90,5 @@ wait_time = 0.1
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="OneSecondTimer" to="EnemyTimer" method="_on_one_second_timer_timeout"]
+[connection signal="timeout" from="OneSecondTimer" to="PowerupSpawnTimer" method="_on_one_second_timer_timeout"]

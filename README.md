@@ -8,13 +8,9 @@ The player defends against an endless stream of enemies, gradually increasing in
 
 ## How To Play
 
-### GitHub Pages
-
-TBD
-
 ### Download Executable
 
-TBD
+Go to the [project releases on GitHub](https://github.com/Potato-Man114/Shooting-Shapes/releases) and download the file associated with the latest release.
 
 ### Run w/ Godot Debug Engine
 
@@ -23,7 +19,9 @@ TBD
 1. Open the project in Godot
 1. Click the "Run" button in the upper-left corner.
 
+## Other Documentation
+
 
 [Game Design Document](docs/GDD.md)
 
-[Sources](docs/sources.md)
+[Sources](docs/sources.md), which list software and assets used that were not created by the contributors listed above.

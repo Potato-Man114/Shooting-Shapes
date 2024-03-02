@@ -11,6 +11,7 @@ signal powerup_lost
 @export var powerup_shot_cooldown = 0.05
 @export var player_texture: Texture2D
 @export var powerup_player_texture: Texture2D
+@export var invincibility = false
 var powerup_active = false
 var screen_size
 var process_input = true
@@ -39,6 +40,8 @@ func _process(delta):
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if (powerup_active):
 		lose_powerup()
+		return
+	if (invincibility):
 		return
 	$DefeatParticleEffect.emitting = true
 	$ExplosionEffect.playing = true

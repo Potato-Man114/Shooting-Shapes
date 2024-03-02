@@ -27,8 +27,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
+	if (playing):
+		if Input.is_action_just_pressed("pause"):
+			get_tree().paused = !get_tree().paused
+			
 
 func game_over():
 	playing = false
@@ -70,7 +72,7 @@ func _on_enemy_timer_timeout():
 		return
 	var enemy = null
 	var y_velocity = null
-	if (randi_range(0, 100) <= 100):
+	if (randi_range(0, 100) <= 15):
 		enemy = hard_enemy_scene.instantiate()
 		y_velocity = -50 if randi_range(0, 100) % 2 == 0 else 50
 	else:
@@ -138,3 +140,10 @@ func powerup_collected():
 
 func _on_game_timer_timeout():
 	game_time += $GameTimer.wait_time
+	if game_time > 1:
+		print("game time")
+		print(game_time)
+		print("wait time")
+		print($EnemyTimer.wait_time)
+		print("1/wait")
+		print(1 / $EnemyTimer.wait_time)
