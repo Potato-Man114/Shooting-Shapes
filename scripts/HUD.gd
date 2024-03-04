@@ -12,6 +12,7 @@ func _ready():
 	$TimeMessage.hide()
 	$Controls.hide()
 	hide_pause_menu()
+	$QuitButton.show()
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,6 +31,7 @@ func show_game_over(game_time):
 	$StartButton.show()
 	$StartButton.grab_focus()
 	$ScoreLabel.hide()
+	$QuitButton.show()
 
 func update_score(score):
 	$ScoreLabel.text = str(score)
@@ -42,6 +44,7 @@ func _on_start_buton_pressed():
 	$TimeMessage.hide()
 	$ScoreLabel.show()
 	$ControlsButton.hide()
+	$QuitButton.hide()
 	start_game.emit()
 
 
@@ -51,9 +54,11 @@ func _on_message_timer_timeout():
 func show_pause_menu():
 	$ResetButton.show()
 	$ResetButton.grab_focus()
+	$QuitButton2.show()
 
 func hide_pause_menu():
 	$ResetButton.hide()
+	$QuitButton2.hide()
 	
 func _on_reset_button_pressed():
 	hide_pause_menu()
@@ -66,8 +71,9 @@ func _on_controls_return_button():
 	$Message.show()
 	$StartButton.show()
 	$StartButton.grab_focus()
-	$SubMessage.show()
+	$SubMessage.hide()
 	$ControlsButton.show()
+	$QuitButton.show()
 
 
 func _on_controls_button_pressed():
@@ -81,5 +87,11 @@ func show_controls():
 	$TimeMessage.hide()
 	$ResetButton.hide()
 	$ControlsButton.hide()
+	$QuitButton.hide()
 	$Controls.show()
 	$Controls/ReturnButton.grab_focus()
+	
+
+func _on_quit_button_pressed():
+	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	get_tree().quit();

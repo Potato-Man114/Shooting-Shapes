@@ -17,7 +17,7 @@ offset_right = -32.0
 offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_colors/background_color = Color(0.282353, 0.698039, 0.858824, 1)
+theme_override_colors/background_color = Color(0.239216, 0.298039, 0.501961, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -30,7 +30,7 @@ text = "HOW TO PLAY
 - SURVIVE AS LONG AS POSSIBLE
 - SHOOT THE ORANGE POWERUPS TO MOVE FASTER, SHOOT MORE, AND SURVIVE A HIT
 - SCORE BY DEFEATING ENEMIES AND COLLECTING POWERUPS
-- LOST SCORE BY MISSING SHOT OR LETTING ENEMIES PAST"
+- LOSE SCORE BY MISSING SHOT OR LETTING ENEMIES PAST"
 editable = false
 context_menu_enabled = false
 shortcut_keys_enabled = false
@@ -66,12 +66,11 @@ offset_left = -1126.0
 offset_right = -714.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_colors/background_color = Color(0.282353, 0.698039, 0.858824, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/background_color = Color(0.239216, 0.298039, 0.501961, 1)
 theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_xw3qu")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 36
 text = "CONTROLS
 
 KEYBOARD:
@@ -79,11 +78,11 @@ KEYBOARD:
 - MOVE DOWN: S
 - SHOOT: SPACE
 - PAUSE: ESC
--  MENU SELECT: SPACE
+- MENU SELECT: SPACE
 
 CONTROLLER:
 - MOVE: JOYSTICK / D-PAD
-- SHTOOT: TRIGGERS or A
+- SHOOT: TRIGGERS OR A
 - PAUSE: START / +
 - MENU SELECT: A"
 editable = false

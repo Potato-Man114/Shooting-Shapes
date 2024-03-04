@@ -52,9 +52,9 @@ grow_horizontal = 2
 grow_vertical = 0
 focus_neighbor_left = NodePath("../ControlsButton")
 focus_neighbor_top = NodePath("../ControlsButton")
-focus_neighbor_right = NodePath("../ControlsButton")
-focus_neighbor_bottom = NodePath("../ControlsButton")
-focus_next = NodePath("../ControlsButton")
+focus_neighbor_right = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../ControlsButton")
 theme_override_fonts/font = ExtResource("2_xb2nt")
 theme_override_font_sizes/font_size = 64
@@ -108,6 +108,12 @@ offset_right = 92.5
 offset_bottom = -101.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_left = NodePath("../QuitButton2")
+focus_neighbor_top = NodePath("../QuitButton2")
+focus_neighbor_right = NodePath("../QuitButton2")
+focus_neighbor_bottom = NodePath("../QuitButton2")
+focus_next = NodePath("../QuitButton2")
+focus_previous = NodePath("../QuitButton2")
 theme_override_fonts/font = ExtResource("2_xb2nt")
 theme_override_font_sizes/font_size = 38
 text = "RESTART?"
@@ -124,19 +130,65 @@ offset_right = 72.0
 offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_left = NodePath("../StartButton")
-focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_right = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../StartButton")
 focus_next = NodePath("../StartButton")
-focus_previous = NodePath("../Message")
+focus_previous = NodePath("../QuitButton")
 theme_override_fonts/font = ExtResource("2_xb2nt")
 theme_override_font_sizes/font_size = 36
 text = "CONTROLS"
 
 [node name="Controls" parent="." instance=ExtResource("3_cnh8n")]
 
+[node name="QuitButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 73.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../ControlsButton")
+focus_neighbor_bottom = NodePath("../ControlsButton")
+focus_next = NodePath("../ControlsButton")
+focus_previous = NodePath("../StartButton")
+theme_override_fonts/font = ExtResource("2_xb2nt")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
+[node name="QuitButton2" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 73.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath("../ResetButton")
+focus_neighbor_top = NodePath("../ResetButton")
+focus_neighbor_right = NodePath("../ResetButton")
+focus_neighbor_bottom = NodePath("../ResetButton")
+focus_next = NodePath("../ResetButton")
+focus_previous = NodePath("../ResetButton")
+theme_override_fonts/font = ExtResource("2_xb2nt")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_buton_pressed"]
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="return_button" from="Controls" to="." method="_on_controls_return_button"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="QuitButton2" to="." method="_on_quit_button_pressed"]

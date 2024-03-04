@@ -37,6 +37,7 @@ func _process(delta):
 				$HUD.hide_pause_menu()
 
 func game_over():
+	Input.start_joy_vibration(0, 0.2, 0.5, 0.2)
 	playing = false
 	$EnemyTimer.stop()
 	$PowerupSpawnTimer.stop()
@@ -144,10 +145,3 @@ func powerup_collected():
 
 func _on_game_timer_timeout():
 	game_time += $GameTimer.wait_time
-	if game_time > 1:
-		print("game time")
-		print(game_time)
-		print("wait time")
-		print($EnemyTimer.wait_time)
-		print("1/wait")
-		print(1 / $EnemyTimer.wait_time)

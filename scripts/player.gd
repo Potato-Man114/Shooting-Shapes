@@ -73,6 +73,7 @@ func powerup():
 	
 func lose_powerup():
 	if (powerup_active):
+		Input.start_joy_vibration(0, 0.2, 0.5, 0.1)
 		powerup_active = false
 		powerup_lost.emit()
 		update_shot_cooldown(shot_cooldown)
