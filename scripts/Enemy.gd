@@ -9,6 +9,8 @@ var velocity
 @export var max_shoot_delay = 3.0
 @export var min_shoot_count = 1.0
 @export var max_shoot_count = 3.0
+@export var defeat_score = 10
+@export var leave_screen_score = -2
 var shots_remaining = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +24,7 @@ func _process(delta):
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	leave_screen.emit()
+	leave_screen.emit(leave_screen_score)
 	queue_free()
 
 
@@ -40,8 +42,8 @@ func _on_between_shot_timer_timeout():
 		$ShootTimer.start()
 
 
-func _on_area_entered(area):
-	defeat.emit()
+func _on_area_entered(_area):
+	defeat.emit(defeat_score)
 	$AudioStreamPlayer2D.playing = true
 	$DefeatParticleEffect.emitting = true
 	$CollisionShape2D.set_deferred("disabled", true)

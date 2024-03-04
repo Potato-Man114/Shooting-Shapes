@@ -11,10 +11,8 @@ extends Node
 @export var enemy_projectile_speed = 150.0
 @export var enemy_projectile_y_speed = 20
 @export var player_projectile_speed = Vector2(250, 0)
-@export var enemy_defeat_score = 10
-@export var enemy_leave_screen_score = -2
-@export var player_shot_leave_screen_score = -1
-@export var powerup_collected_score = 15
+@export var enemy_spawn_change = 50
+@export var hard_enemy_spawn_percentage = 15
 
 var screen_size
 var score = 0
@@ -27,7 +25,7 @@ func _ready():
 	$Player.process_input = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (playing):
 		if Input.is_action_just_pressed("pause"):
 			get_tree().paused = !get_tree().paused
@@ -73,11 +71,11 @@ func _on_powerup_spawn_timer_timeout():
 	
 func _on_enemy_timer_timeout():
 	# 50% chance of actually spawning an enemy
-	if (randi_range(0, 100) % 2 == 0):
+	if (randi_range(0, 100) <= enemy_spawn_change):
 		return
 	var enemy = null
 	var y_velocity = null
-	if (randi_range(0, 100) <= 15):
+	if (randi_range(0, 100) <= hard_enemy_spawn_percentage):
 		enemy = hard_enemy_scene.instantiate()
 		y_velocity = -50 if randi_range(0, 100) % 2 == 0 else 50
 	else:
@@ -92,8 +90,8 @@ func _on_enemy_timer_timeout():
 	enemy.velocity = velocity
 	
 	enemy.connect("shoot", enemy_shot)
-	enemy.connect("defeat", enemy_defeat)
-	enemy.connect("leave_screen", enemy_leave_screen)
+	enemy.connect("defeat", update_score)
+	enemy.connect("leave_screen", update_score)
 	add_child(enemy)
 	
 func enemy_shot(x, y):
@@ -106,8 +104,7 @@ func enemy_shot(x, y):
 	add_child(shot)
 	
 	
-func get_enemy_shot_velocity(x, y):
-	#TODO: y value
+func get_enemy_shot_velocity(_x, y):
 	var y_velocity = 0
 	if (y < $Player.position.y - screen_size.y * 0.05):
 		y_velocity = enemy_projectile_y_speed
@@ -122,14 +119,8 @@ func _on_player_shoot(x, y):
 	shot.connect("leave_screen", player_shot_leave_screen)
 	add_child(shot)
 
-func enemy_defeat():
-	update_score(enemy_defeat_score)
-	
-func enemy_leave_screen():
-	update_score(enemy_leave_screen_score)
-	
-func player_shot_leave_screen():
-	update_score(player_shot_leave_screen_score)
+func player_shot_leave_screen(score_change):
+	update_score(score_change)
 	
 func update_score(score_change):
 	if (!playing):
@@ -138,9 +129,9 @@ func update_score(score_change):
 	score = 0 if score < 0 else score
 	$HUD.update_score(score)
 
-func powerup_collected():
+func powerup_collected(score_change):
 	$Player.powerup()
-	update_score(powerup_collected_score)
+	update_score(score_change)
 
 
 func _on_game_timer_timeout():

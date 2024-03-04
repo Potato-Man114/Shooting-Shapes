@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp0mi4kif2o1c"]
+[gd_scene load_steps=12 format=3 uid="uid://dp0mi4kif2o1c"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8ajgf"]
 [ext_resource type="Texture2D" uid="uid://cms51rikgj2lh" path="res://art/player_sprite.png" id="1_mt26p"]
-[ext_resource type="Texture2D" uid="uid://4i0o54okc4aj" path="res://art/player_powerup_sprite.png" id="3_367o2"]
+[ext_resource type="Texture2D" uid="uid://16w0pi5fr2o6" path="res://art/player_powerup_sprite_1.png" id="3_gf8ag"]
 [ext_resource type="Texture2D" uid="uid://dpyn4j48dvor1" path="res://art/green_particle.png" id="4_i7ptx"]
+[ext_resource type="Texture2D" uid="uid://kufw1ymlx658" path="res://art/player_powerup_sprite_2.png" id="4_x3ewk"]
+[ext_resource type="Texture2D" uid="uid://bh7bfp4iisaye" path="res://art/player_powerup_sprite_3.png" id="5_aoq7n"]
 [ext_resource type="Texture2D" uid="uid://1xow0eyc1qbs" path="res://art/blue_particle.png" id="5_iy3pc"]
 [ext_resource type="AudioStream" uid="uid://dd528q1vcklo3" path="res://audio/shot.mp3" id="6_yt12m"]
 [ext_resource type="AudioStream" uid="uid://cw5neke6hcyqi" path="res://audio/defeat.mp3" id="7_gonii"]
@@ -16,13 +18,9 @@ size = Vector2(32, 28)
 position = Vector2(97, 325)
 collision_mask = 10
 script = ExtResource("1_8ajgf")
-speed = 200
-powerup_speed = 300
-start_position = Vector2(95, 325)
-powerup_shot_cooldown = 0.15
-player_texture = ExtResource("1_mt26p")
-powerup_player_texture = ExtResource("3_367o2")
+player_textures = Array[Texture2D]([ExtResource("1_mt26p"), ExtResource("3_gf8ag"), ExtResource("4_x3ewk"), ExtResource("5_aoq7n")])
 invincibility = true
+start_position = Vector2(95, 325)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

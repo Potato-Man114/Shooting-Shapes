@@ -1,10 +1,10 @@
 extends Area2D
 
 signal leave_screen
-signal collected
+signal collected(score)
 
 var velocity = Vector2(-50, 0)
-
+@export var collected_score_change = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,8 +15,8 @@ func _ready():
 func _process(delta):
 	position += velocity * delta
 
-func _on_area_entered(area):
-	collected.emit()
+func _on_area_entered(_area):
+	collected.emit(collected_score_change)
 	$CollectedSoundEffect.playing = true
 	$Sprite2D.hide() 
 	$CollisionShape2D.set_deferred("disabled", true)
