@@ -26,10 +26,12 @@ func _process(delta):
 	if (!process_input):
 		return
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("move_down"):
-		velocity.y += speed if !powerup_active else powerup_speed
-	if Input.is_action_pressed("move_up"):
-		velocity.y += -speed if !powerup_active else -powerup_speed
+	var input = Input.get_axis("move_up", "move_down")
+	velocity.y += input * (speed if !powerup_active else powerup_speed)
+	#if Input.is_action_pressed("move_down"):
+		#velocity.y += speed if !powerup_active else powerup_speed
+	#if Input.is_action_pressed("move_up"):
+		#velocity.y += -speed if !powerup_active else -powerup_speed
 
 	if Input.is_action_pressed("shoot") and $ShotCooldown.is_stopped():
 		shoot_projectile()

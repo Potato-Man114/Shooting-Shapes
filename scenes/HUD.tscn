@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://7nf8fbsxbiyy"]
+[gd_scene load_steps=4 format=3 uid="uid://7nf8fbsxbiyy"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_tfdh6"]
 [ext_resource type="FontFile" uid="uid://b5ftjs8qctuy1" path="res://art/Micro5-Regular.ttf" id="2_xb2nt"]
+[ext_resource type="PackedScene" uid="uid://b0dwf6uc6guji" path="res://scenes/Controls.tscn" id="3_cnh8n"]
 
 [node name="Hud" type="CanvasLayer"]
 process_mode = 3
@@ -44,11 +45,17 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -139.0
-offset_top = -255.0
+offset_top = -217.0
 offset_right = 139.0
-offset_bottom = -182.0
+offset_bottom = -144.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_left = NodePath("../ControlsButton")
+focus_neighbor_top = NodePath("../ControlsButton")
+focus_neighbor_right = NodePath("../ControlsButton")
+focus_neighbor_bottom = NodePath("../ControlsButton")
+focus_next = NodePath("../ControlsButton")
+focus_previous = NodePath("../ControlsButton")
 theme_override_fonts/font = ExtResource("2_xb2nt")
 theme_override_font_sizes/font_size = 64
 text = "PLAY"
@@ -105,5 +112,31 @@ theme_override_fonts/font = ExtResource("2_xb2nt")
 theme_override_font_sizes/font_size = 38
 text = "RESTART?"
 
+[node name="ControlsButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = 55.0
+offset_right = 72.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../Message")
+theme_override_fonts/font = ExtResource("2_xb2nt")
+theme_override_font_sizes/font_size = 36
+text = "CONTROLS"
+
+[node name="Controls" parent="." instance=ExtResource("3_cnh8n")]
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_buton_pressed"]
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="return_button" from="Controls" to="." method="_on_controls_return_button"]
