@@ -29,20 +29,21 @@ powerup_scene = ExtResource("5_xy5l6")
 
 [node name="Player" parent="." instance=ExtResource("1_fjmar")]
 process_mode = 1
+shot_cooldown_base = 0.275
+speed_base = 225
 invincibility = false
 
 [node name="EnemyTimer" type="Timer" parent="."]
 process_mode = 1
 script = ExtResource("6_8rbgp")
 rate_increate_per_second = 0.09
-max_spawn_rate = 14
 
 [node name="PowerupSpawnTimer" type="Timer" parent="."]
 process_mode = 1
 script = ExtResource("6_8rbgp")
-rate_increate_per_second = 0.01
-initial_rate_per_second = 0.075
-max_spawn_rate = 2
+rate_increate_per_second = 0.002
+initial_rate_per_second = 0.05
+max_spawn_rate = 0.5
 
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
 process_mode = 3

@@ -4,7 +4,7 @@ signal max_rate_reached
 
 @export var rate_increate_per_second = 0.03
 @export var initial_rate_per_second = 1.0
-@export var max_spawn_rate = 15
+@export var max_spawn_rate = 15.0
 var at_max
 
 # Called when the node enters the scene tree for the first time.
@@ -28,3 +28,5 @@ func set_spawn_rate(rate):
 	
 func _on_one_second_timer_timeout():
 	set_spawn_rate((1 / wait_time) + rate_increate_per_second) 
+	if ( 1 / wait_time < 1):
+		print(1 / wait_time)
