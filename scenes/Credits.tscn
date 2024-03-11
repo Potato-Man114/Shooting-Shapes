@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj7ey0p176xwu"]
+
+[ext_resource type="Script" path="res://scenes/Credits.gd" id="1_4225y"]
+[ext_resource type="FontFile" uid="uid://b5ftjs8qctuy1" path="res://art/Micro5-Regular.ttf" id="2_uo8va"]
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_4225y")
+
+[node name="GameplayInstructions" type="TextEdit" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -413.0
+offset_right = 414.0
+offset_bottom = 466.0
+grow_horizontal = 2
+theme_override_colors/background_color = Color(0.239216, 0.298039, 0.501961, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_uo8va")
+theme_override_font_sizes/font_size = 36
+text = "CREDITS
+Audio
+- https://mixkit.co/free-sound-effects/arcade/
+- https://pixabay.com/sound-effects/search/arcade/
+- https://soundimage.org/action-4/
+Gameplay Engine
+- Godot
+Play Testing
+- Chloe Hill
+Everything Else
+- Matthew Hill"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="ReturnButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = 218.0
+offset_right = 114.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_uo8va")
+theme_override_font_sizes/font_size = 48
+text = "MAIN MENU"
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

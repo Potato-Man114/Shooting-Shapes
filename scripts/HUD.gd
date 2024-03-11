@@ -11,6 +11,8 @@ func _ready():
 	$SubMessage.hide()
 	$TimeMessage.hide()
 	$Controls.hide()
+	$CreditsButton.show()
+	$Credits.hide()
 	hide_pause_menu()
 	$QuitButton.show()
 	
@@ -45,6 +47,7 @@ func _on_start_buton_pressed():
 	$ScoreLabel.show()
 	$ControlsButton.hide()
 	$QuitButton.hide()
+	$CreditsButton.hide()
 	start_game.emit()
 
 
@@ -68,11 +71,13 @@ func _on_reset_button_pressed():
 
 func _on_controls_return_button():
 	$Controls.hide()
+	$Credits.hide()
 	$Message.show()
 	$StartButton.show()
 	$StartButton.grab_focus()
 	$SubMessage.hide()
 	$ControlsButton.show()
+	$CreditsButton.show()
 	$QuitButton.show()
 
 
@@ -88,6 +93,7 @@ func show_controls():
 	$ResetButton.hide()
 	$ControlsButton.hide()
 	$QuitButton.hide()
+	$Credits.hide()
 	$Controls.show()
 	$Controls/ReturnButton.grab_focus()
 	
@@ -95,3 +101,22 @@ func show_controls():
 func _on_quit_button_pressed():
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit();
+
+	
+func show_credits():
+	$ScoreLabel.hide()
+	$Message.hide()
+	$StartButton.hide()
+	$SubMessage.hide()
+	$TimeMessage.hide()
+	$ResetButton.hide()
+	$ControlsButton.hide()
+	$CreditsButton.hide()
+	$QuitButton.hide()
+	$Controls.hide()
+	$Credits.show()
+	$Credits/ReturnButton.grab_focus()
+
+
+func _on_credits_button_pressed():
+	show_credits()

@@ -19,6 +19,8 @@ var score = 0
 var playing =  false
 var game_time = 0.0
 
+const SCORE_FILE_LOCATION = "user://scoreboard.txt"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport().size

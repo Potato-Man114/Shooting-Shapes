@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://7nf8fbsxbiyy"]
+[gd_scene load_steps=5 format=3 uid="uid://7nf8fbsxbiyy"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_tfdh6"]
 [ext_resource type="FontFile" uid="uid://b5ftjs8qctuy1" path="res://art/Micro5-Regular.ttf" id="2_xb2nt"]
 [ext_resource type="PackedScene" uid="uid://b0dwf6uc6guji" path="res://scenes/Controls.tscn" id="3_cnh8n"]
+[ext_resource type="PackedScene" uid="uid://cj7ey0p176xwu" path="res://scenes/Credits.tscn" id="4_r4v1a"]
 
 [node name="Hud" type="CanvasLayer"]
 process_mode = 3
@@ -186,9 +187,22 @@ theme_override_fonts/font = ExtResource("2_xb2nt")
 theme_override_font_sizes/font_size = 30
 text = "QUIT"
 
+[node name="Credits" parent="." instance=ExtResource("4_r4v1a")]
+
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = 976.0
+offset_top = 583.0
+offset_right = 1108.0
+offset_bottom = 634.0
+theme_override_fonts/font = ExtResource("2_xb2nt")
+theme_override_font_sizes/font_size = 30
+text = "CREDITS"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_buton_pressed"]
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="return_button" from="Controls" to="." method="_on_controls_return_button"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="QuitButton2" to="." method="_on_quit_button_pressed"]
+[connection signal="return_button" from="Credits" to="." method="_on_controls_return_button"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
